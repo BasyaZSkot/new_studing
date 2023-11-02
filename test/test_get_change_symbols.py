@@ -1,16 +1,16 @@
-import sys
+from code.passwords_generator import add_separator as func
 
-sys.path.append('C:\\Users\\User\\PYTHON_PROJECTS\\studing\\code')
+def test_change_symbols_a_b():
+    change_symbols = ('a', 'b')
 
-from passwords_generator import get_replce_symbols as func
+    first_symb, second_symb = func(change_symbols)
+    assert first_symb == 'a'
+    assert second_symb == 'b'
 
-tests_parametr1 = ('a', 'b')
-tests_parametr2 = False
 
-def test_1():
-    first_answ, second_answ = func(tests_parametr1)
-    assert first_answ == 'a', 'b'
+def test_change_symbols_noth_noth():
+    change_symbols = ('', '')
 
-def test_2():
-    first_answ, second_answ = func(tests_parametr2)
-    assert first_answ == '', ''
+    first_symb, second_symb = func(change_symbols)
+    assert first_symb == ''
+    assert second_symb == ''
