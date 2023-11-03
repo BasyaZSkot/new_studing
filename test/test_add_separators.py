@@ -1,5 +1,6 @@
 from password_generator import add_separator as func
 
+
 def test_add_separator_():
     separator = '_'
     list_of_passwords = [['fishing', 'dog', 'cat', 'purple', 'school'], [
@@ -16,4 +17,3 @@ def test_add_separator_noth():
 
     assert func(separator, list_of_passwords) == [
         'fishingdogcatpurpleschool', 'footballballtablechairdish']
-#sssssssssss

@@ -1,5 +1,6 @@
 from password_generator import add_separator as func
 
+
 def test_basic_password_list():
     passwords_num = 2
     words_num = 3

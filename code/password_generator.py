@@ -16,7 +16,6 @@ FILE_OUTPUT_PATH = os.path.abspath(f"{folder_name}/{file_name}")
 @click.option('--separators', '-s', type=str, default='', help='Spaces in your password.', show_default=True)
 @click.option('--change_symbols', '-ch', default=('', ''), type=str, multiple=True, help="Symbols which will change.", show_default=True)
 @click.option('--passwords_in_file', '-pif', default=True, help='This variable indicates whether passwords will be written to the file', show_default=True, is_flag=True)
-
 def start_program(password_num, word_num, dictionary_of_words, separators, change_symbols, passwords_in_file):
 
     dictionary_of_words = get_dictionary(dictionary_of_words)
