@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "603cc47f574887c684567b8eeeaf258d60aef6de621dc3d35648d9822f6287a9"
+            "sha256": "5be60667db7816c7412228d40eb16f514dd1f8a8ce1ae5badc5613eac0b34355"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,6 +32,13 @@
             ],
             "markers": "platform_system == 'Windows'",
             "version": "==0.4.6"
+        },
+        "password-generator": {
+            "hashes": [
+                "sha256:9807398c9c3565b49041a256ceff9a99d698141c2bdf0b0b9101d22a134fd707"
+            ],
+            "index": "pypi",
+            "version": "==0.1.0"
         }
     },
     "develop": {}

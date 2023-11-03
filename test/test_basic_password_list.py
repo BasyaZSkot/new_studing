@@ -1,4 +1,4 @@
-from code.passwords_generator import add_separator as func
+from password_generator import add_separator as func
 
 def test_basic_password_list():
     passwords_num = 2
