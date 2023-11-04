@@ -41,3 +41,6 @@ If you want to use your own dictionary, create a text file with one word per lin
 ### Note
 
 Make sure to run the script with appropriate file permissions if you are writing passwords to a file in a directory where you need write access.
+
+## Personal achievements in the project
+This is my first project. It was created while learning the Python programming language. With the help of this project I learned the basics of git and github, and also became familiar with the click library.
