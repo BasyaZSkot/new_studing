@@ -1,33 +1,43 @@
-# Password Generator
+# Passwords Generator
 
-This Python script generates random passwords based on specified parameters. It provides the user with control over the number of words in the password, the option to use a custom word dictionary, and the ability to replace specific characters in the password.
+This Python script generates random passwords based on a given dictionary of words. You can customize the number of passwords, the number of words in each password, specify a dictionary file, add separators between words, and replace certain symbols in the generated passwords.
 
-## Usage Instructions
+## Prerequisites
 
-### Before using the program, make sure you have Python installed. To run the program, execute the following command in the command line:
+You need to run virtualenv with this command:
 
-    python passwords_generator.py --help
+    pipenv shell
 
-This command will show you the available options and their descriptions.
+## Usage
 
-### Command Line Options
+Before running the script, make sure to check the available options by using the following command:
 
-    --password_num: Number of passwords to generate (default is 1).
-    --word_num: Number of words in each password (default is 1).
-    --dictionary_of_words, -d: List of words to use for generating passwords (default is a built-in dictionary).
-    --separators: Separator characters to add between words in the password (default is no separator).
-    --change_symbols, -r: Replace specific symbols in the generated passwords (default is no replacement).
-    --print_passwords: If specified, the generated passwords will be printed to the console. If not specified, passwords will be saved to a file named password_list.txt.
+    python password_generator.py --help
 
-## Usage Examples
+### Options
 
-### Generate 3 passwords, each consisting of 4 words, and print them:
+    - `--word_num`, `-wn`: Number of words in each password (default: 1)
+    - `--password_num`, `-pn`: Number of passwords to generate (default: 1)
+    - `--path_of_dictionary`, `-pof`: Path to the dictionary file containing words (default: 'dictionaries/basic_list_of_words.txt')
+    - `--separators`, `-s`: Spaces or separators between words in the password (default: '')
+    - `--change_symbols`, `-ch`: Symbols to be replaced in the generated passwords (default: ('', ''))
+    - `--passwords_in_file`, `-pif`: Indicates whether passwords will be written to a file (default: True)
+    - `--out_file`, `-of`: Path to the output file where generated passwords will be saved (default: 'output/password_list.txt')
 
-    python passwords_generator.py --password_num 3 --word_num 4 --print_passwords True
+### Example Usage
 
-### Generate a password using a custom word list, enter passwords in file and replace                              "a" with "b":
+Generate a single password with 3 words from the default dictionary, separated by hyphens, and save it to a file:
 
-    python passwords_generator.py --password_num 1 --word_num 3 -d cat -d dog -d cow -r a -r b
+    python password_generator.py --password_num 1 --word_num 3 --separators - --passwords_in_file 
 
-## Personal achievements in the project
-This is my first project. It was created while learning the Python programming language. With the help of this project I learned the basics of git and github, and also became familiar with the click library.
+Also generate a single password with 3 words from the default dictionary, separated by hyphens, and save it to a file:
+
+    python password_generator.py -pn 1 -wn 3 -s _ -pif 
+
+## Custom Dictionary
+
+If you want to use your own dictionary, create a text file with one word per line and specify the path to this file using the `--path_of_dictionary` option.
+
+### Note
+
+Make sure to run the script with appropriate file permissions if you are writing passwords to a file in a directory where you need write access.
