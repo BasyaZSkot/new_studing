@@ -4,29 +4,28 @@ import click
 
 import os
 
-file_name = 'password_list.txt'
-folder_name = 'output'
-FILE_OUTPUT_PATH = os.path.abspath(f"{folder_name}/{file_name}")
-
 
 @click.command()
 @click.option('--password_num', '-pn', type=int, default=1, help='Count of password.', show_default=True)
 @click.option('--word_num', '-wn', type=int, default=1, help='How many words in password.', show_default=True)
-@click.option('--dictionary_of_words', '-df', type=str, default='dictionaries/basic_list_of_words.txt', help="Path of dictionary. Example: folder_name/file_name. If you want to use your dictionary, you need to add this file in 'dictionaries'.", show_default=True)
+@click.option('--path_of_dictionary', '-pof', type=str, default='dictionaries/basic_list_of_words.txt', help="Path of dictionary. Example: folder_name/file_name. If you want to use your dictionary, you need to add this file in 'dictionaries'.", show_default=True)
 @click.option('--separators', '-s', type=str, default='', help='Spaces in your password.', show_default=True)
 @click.option('--change_symbols', '-ch', default=('', ''), type=str, multiple=True, help="Symbols which will change.", show_default=True)
 @click.option('--passwords_in_file', '-pif', default=True, help='This variable indicates whether passwords will be written to the file', show_default=True, is_flag=True)
-def start_program(password_num, word_num, dictionary_of_words, separators, change_symbols, passwords_in_file):
+@click.option('--out_file', '-of', default='output/password_list.txt', help='Path of output file. Exmple folder_name/file_name')
 
-    dictionary_of_words = get_dictionary(dictionary_of_words)
+
+def start_program(password_num, word_num, path_of_dictionary, separators, change_symbols, passwords_in_file, out_file):
+
+    dictionary_of_words = get_dictionary(path_of_dictionary)
     change_symbols_from, change_symbols_to = get_replce_symbols(change_symbols)
 
     password_list = basic_passwords_list(
         password_num, word_num, dictionary_of_words)
-    password_list = passwords_with_separatores(separators, password_list)
+    password_list = add_separator(separators, password_list)
     password_list = replace_symbols(
         change_symbols_from, change_symbols_to, password_list)
-    write_passwords_in_file(password_list, passwords_in_file)
+    write_passwords_in_file(password_list, passwords_in_file, out_file)
 
 
 def basic_passwords_list(password_num, word_num, dictionary_of_words):
@@ -55,7 +54,7 @@ def get_dictionary(dictionary_of_words):
     return new_dictionary
 
 
-def passwords_with_separatores(separators, password_list):
+def add_separator(separators, password_list):
 
     new_password_list = []
 
@@ -66,7 +65,11 @@ def passwords_with_separatores(separators, password_list):
     return new_password_list
 
 
-def write_passwords_in_file(password_list, passwords_in_file):
+def write_passwords_in_file(password_list, passwords_in_file, out_file):
+    out_file = out_file.split('/')
+    folder_name, file_name = out_file
+    FILE_OUTPUT_PATH = os.path.abspath(f"{folder_name}/{file_name}")
+
     if passwords_in_file:
         with open(FILE_OUTPUT_PATH, 'w', encoding='utf-8') as f:
             for i in password_list:
