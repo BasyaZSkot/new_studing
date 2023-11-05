@@ -1,4 +1,4 @@
-from code.password_generator import add_separator as func
+from src.password_generator import add_separator as func
 
 
 def test_change_symbols_a_b():
