@@ -1,12 +1,30 @@
-from src.password_generator import add_separator as func
+from src.password_generator import basic_passwords_list 
 
 
 def test_basic_password_list():
+    # given
     passwords_num = 2
     words_num = 3
-    dictionary_of_words = ['fishing', 'dog', 'cat', 'purple', 'school']
+    dictionary = ['fishing', 'dog', 'cat', 'purple', 'school']
 
-    basic_passwords_list = func(passwords_num, words_num, dictionary_of_words)
-    for passwords in basic_passwords_list:
+    # when
+    passwords_list = basic_passwords_list(passwords_num, words_num, dictionary)
+    
+    # then
+    for passwords in passwords_list:
         for words in passwords:
-            assert words in dictionary_of_words == True
+            assert words in dictionary
+
+def test_lenth_of_password_list():
+    # given
+    passwords_num = 2
+    words_num = 3
+    dictionary = ['fishing', 'dog', 'cat', 'purple', 'school']
+
+    # when
+    passwords_list = basic_passwords_list(passwords_num, words_num, dictionary)
+    
+    # then
+    assert len(passwords_list) == 2
+    assert len(passwords_list[0]) == 3
+    assert len(passwords_list[1]) == 3

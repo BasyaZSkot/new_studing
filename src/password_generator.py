@@ -44,10 +44,10 @@ def basic_passwords_list(password_num, word_num, dictionary):
 
 def get_dictionary(path_of_dictionary):
     path_of_dictionary = path_of_dictionary.split('/')
-    folder_name, file_name = dictionary_of_words
-    DICTIONARY_PATH = os.path.abspath(f"{folder_name}/{file_name}")
+    folder_name, file_name = path_of_dictionary
+    dictioanary_path = os.path.abspath(f"{folder_name}/{file_name}")
 
-    with open(DICTIONARY_PATH, 'r', encoding='utf-8') as f:
+    with open(dictioanary_path, 'r', encoding='utf-8') as f:
         dictionary = f.read()
         dictionary = dictionary.split()
 
@@ -68,10 +68,10 @@ def add_separator(separators, password_list):
 def write_passwords_in_file(password_list, passwords_in_file, out_file):
     out_file = out_file.split('/')
     folder_name, file_name = out_file
-    FILE_OUTPUT_PATH = os.path.abspath(f"{folder_name}/{file_name}")
+    file_output_path = os.path.abspath(f"{folder_name}/{file_name}")
 
     if passwords_in_file:
-        with open(FILE_OUTPUT_PATH, 'w', encoding='utf-8') as f:
+        with open(file_output_path, 'w', encoding='utf-8') as f:
             for i in password_list:
                 f.write(i + '\n')
 
