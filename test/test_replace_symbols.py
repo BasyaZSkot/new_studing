@@ -1,21 +1,19 @@
-import sys
-
-sys.path.append('C:\\Users\\User\\PYTHON_PROJECTS\\studing\\code')
-
-from passwords_generator import replace_symbols as func
-
-tests_parametr1 = 'a'
-tests_parametr2 = 'b'
-tests_parametr3 = ''
-tests_parametr4 = ''
-tests_parametr5 = ['cat_cat_cat', 'cat_cat_cat']
-tests_parametr6 = ['fishing_fishing_fishing', 'fishing_fishing_fishing']
+from src.password_generator import add_separator as func
 
 
-def test_1():
-    assert type(func(tests_parametr1, tests_parametr2, tests_parametr5)) == list
-    assert func(tests_parametr1, tests_parametr2, tests_parametr5) == ['cbt_cbt_cbt', 'cbt_cbt_cbt']
+def test_replace_a_with_b():
+    change_symbols_from = 'b'
+    change_symbols_to = 'a'
+    list_of_passwords = ['cat_dog_school_atack', 'dog_phone_case_table']
 
-def test_2():
-    assert type(func(tests_parametr3, tests_parametr4, tests_parametr6)) == list
-    assert func(tests_parametr3, tests_parametr4, tests_parametr6) == ['fishing_fishing_fishing', 'fishing_fishing_fishing']
+    assert func(change_symbols_from, change_symbols_to, list_of_passwords) == [
+        'cbt_dog_school_btbck', 'dog_phone_cbse_tbble']
+
+
+def test_replace_noth_with_noth():
+    change_symbols_from = ''
+    change_symbols_to = ''
+    list_of_passwords = ['cat_dog_school_atack', 'dog_phone_case_table']
+
+    assert func(change_symbols_from, change_symbols_to, list_of_passwords) == [
+        'cat_dog_school_atack', 'dog_phone_case_table']

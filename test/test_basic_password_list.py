@@ -1,12 +1,12 @@
-import sys
+from src.password_generator import add_separator as func
 
-sys.path.append('C:\\Users\\User\\PYTHON_PROJECTS\\studing\\code')
 
-from passwords_generator import basic_passwords_list as func
+def test_basic_password_list():
+    passwords_num = 2
+    words_num = 3
+    dictionary_of_words = ['fishing', 'dog', 'cat', 'purple', 'school']
 
-tests_parametr1 = 2
-tests_parametr2 = 3
-tests_parametr3 = ['fishing']
-
-def test_1():
-    assert func(tests_parametr1, tests_parametr2, tests_parametr3) == [['fishing', 'fishing', 'fishing'], ['fishing', 'fishing', 'fishing']]
+    basic_passwords_list = func(passwords_num, words_num, dictionary_of_words)
+    for passwords in basic_passwords_list:
+        for words in passwords:
+            assert words in dictionary_of_words == True

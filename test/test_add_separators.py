@@ -1,17 +1,19 @@
-import sys
+from src.password_generator import add_separator as func
 
-sys.path.append('C:\\Users\\User\\PYTHON_PROJECTS\\studing\\code')
 
-from passwords_generator import separators_and_new_password_list as func
+def test_add_separator_():
+    separator = '_'
+    list_of_passwords = [['fishing', 'dog', 'cat', 'purple', 'school'], [
+        'football', 'ball', 'table', 'chair', 'dish']]
 
-tests_parametr1 = '_'
-tests_parametr2 = [['fishing', 'fishing', 'fishing'], ['fishing', 'fishing', 'fishing']]
-tests_parametr3 = ''
+    assert func(separator, list_of_passwords) == [
+        'fishing_dog_cat_purple_school', 'football_ball_table_chair_dish']
 
-def test_1():
-    assert type(func(tests_parametr1, tests_parametr2)) == list
-    assert func(tests_parametr1, tests_parametr2) == ['fishing_fishing_fishing', 'fishing_fishing_fishing']
 
-def test_2():
-    assert type(func(tests_parametr3, tests_parametr2)) == list
-    assert func(tests_parametr3, tests_parametr2) == ['fishingfishingfishing', 'fishingfishingfishing']
+def test_add_separator_noth():
+    separator = ''
+    list_of_passwords = [['fishing', 'dog', 'cat', 'purple', 'school'], [
+        'football', 'ball', 'table', 'chair', 'dish']]
+
+    assert func(separator, list_of_passwords) == [
+        'fishingdogcatpurpleschool', 'footballballtablechairdish']
