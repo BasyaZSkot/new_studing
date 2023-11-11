@@ -6,13 +6,13 @@ import os
 
 
 @click.command()
-@click.option('--password_num', '-pn', type=int, default=1, help='Count of password.', show_default=True)
-@click.option('--word_num', '-wn', type=int, default=1, help='How many words in password.', show_default=True)
-@click.option('--path_of_dictionary', '-pof', type=str, default='dictionaries/basic_list_of_words.txt', help="Path of dictionary. Example: folder_name/file_name. If you want to use your dictionary, you need to add this file in 'dictionaries'.", show_default=True)
+@click.option('--password_num', '-pn', type=int, default=1, help='Number of passwords.', show_default=True)
+@click.option('--word_num', '-wn', type=int, default=1, help='Number of words in the password.', show_default=True)
+@click.option('--path_of_dictionary', '-pof', type=str, default='dictionaries/basic_list_of_words.txt', help="Dictionary path.", show_default=True)
 @click.option('--separators', '-s', type=str, default='', help='Spaces in your password.', show_default=True)
-@click.option('--change_symbols', '-ch', default=('', ''), multiple=True, help="Symbols which will change.", show_default=True)
-@click.option('--passwords_in_file', '-pif', default=True, help='This variable indicates whether passwords will be written to the file', show_default=True, is_flag=True)
-@click.option('--out_file', '-of', default='output/password_list.txt', help='Path of output file. Exmple folder_name/file_name', show_default=True)
+@click.option('--change_symbols', '-ch', default=('', ''), multiple=True, help="Symbols that will change.", show_default=True)
+@click.option('--passwords_in_file', '-pif', default=True, help='This variable indicates whether passwords will be written to the file.', show_default=True, is_flag=True)
+@click.option('--out_file', '-of', default='output/password_list.txt', help='Output file path.', show_default=True)
 
 
 def start_program(password_num, word_num, path_of_dictionary, separators, change_symbols, passwords_in_file, out_file):
@@ -44,10 +44,10 @@ def basic_passwords_list(password_num, word_num, dictionary):
 
 def get_dictionary(path_of_dictionary):
     path_of_dictionary = path_of_dictionary.split('/')
-    folder_name, file_name = dictionary_of_words
-    DICTIONARY_PATH = os.path.abspath(f"{folder_name}/{file_name}")
+    folder_name, file_name = path_of_dictionary
+    dictioanary_path = os.path.abspath(f"{folder_name}/{file_name}")
 
-    with open(DICTIONARY_PATH, 'r', encoding='utf-8') as f:
+    with open(dictioanary_path, 'r', encoding='utf-8') as f:
         dictionary = f.read()
         dictionary = dictionary.split()
 
@@ -68,10 +68,10 @@ def add_separator(separators, password_list):
 def write_passwords_in_file(password_list, passwords_in_file, out_file):
     out_file = out_file.split('/')
     folder_name, file_name = out_file
-    FILE_OUTPUT_PATH = os.path.abspath(f"{folder_name}/{file_name}")
+    file_output_path = os.path.abspath(f"{folder_name}/{file_name}")
 
     if passwords_in_file:
-        with open(FILE_OUTPUT_PATH, 'w', encoding='utf-8') as f:
+        with open(file_output_path, 'w', encoding='utf-8') as f:
             for i in password_list:
                 f.write(i + '\n')
 
@@ -96,5 +96,5 @@ def replace_symbols(change_symbols_from, change_symbols_to, password_list):
 
 
 if __name__ == "__main__":
-    print('Before that you start program enter command: python passwords_generator.py --help')
+    print('For help run with -h')
     start_program()
